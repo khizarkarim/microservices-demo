@@ -73,7 +73,7 @@ resource "aws_instance" "ci-sockshop-k8s-master" {
   }
 
   provisioner "file" {
-    source = "deploy/kubernetes/manifests"
+    source = "../manifests"
     destination = "/tmp/"
   }
 
@@ -101,7 +101,7 @@ resource "aws_instance" "ci-sockshop-k8s-node" {
   connection {
     user = "ubuntu"
     host = self.public_ip
-    private_key = "${file("${var.private_key_path}")}"
+    private_key = "${var.private_key_path}"
   }
 
   provisioner "remote-exec" {
