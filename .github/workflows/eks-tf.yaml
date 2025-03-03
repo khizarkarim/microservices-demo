@@ -1,5 +1,6 @@
 name: eks-tf
 on:
+  workfworkflow_dispatch:
   push:
     branches:
       - main
