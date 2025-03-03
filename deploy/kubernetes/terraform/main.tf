@@ -1,5 +1,7 @@
 provider "aws" {
   region = "${var.aws_region}"
+  # shared_credentials_files = ["/Users/kkarim/.aws/credentials"]
+  # profile = "440309162884_AWSAdministratorAccess"
 }
 
 resource "aws_security_group" "k8s-security-group" {
@@ -60,13 +62,14 @@ resource "aws_instance" "ci-sockshop-k8s-master" {
   ami             = "${lookup(var.aws_amis, var.aws_region)}"
   key_name        = "${var.key_name}"
   security_groups = ["${aws_security_group.k8s-security-group.name}"]
-  tags {
+  tags = {
     Name = "ci-sockshop-k8s-master"
   }
 
   connection {
     user = "ubuntu"
-    private_key = "${file("${var.private_key_path}")}"
+    host = self.public_ip
+    private_key = "${var.private_key_path}"
   }
 
   provisioner "file" {
@@ -77,7 +80,7 @@ resource "aws_instance" "ci-sockshop-k8s-master" {
   provisioner "remote-exec" {
     inline = [
       "sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -",
-      "sudo echo \"deb http://apt.kubernetes.io/ kubernetes-xenial main\" | sudo tee --append /etc/apt/sources.list.d/kubernetes.list",
+      "sudo echo \"deb http://apt.kubernetes.io/ kubernetes-jammy main\" | sudo tee --append /etc/apt/sources.list.d/kubernetes.list",
       "sudo apt-get update",
       "sudo apt-get install -y docker.io",
       "sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni"
@@ -91,19 +94,20 @@ resource "aws_instance" "ci-sockshop-k8s-node" {
   ami             = "${lookup(var.aws_amis, var.aws_region)}"
   key_name        = "${var.key_name}"
   security_groups = ["${aws_security_group.k8s-security-group.name}"]
-  tags {
+  tags = {
     Name = "ci-sockshop-k8s-node"
   }
 
   connection {
     user = "ubuntu"
+    host = self.public_ip
     private_key = "${file("${var.private_key_path}")}"
   }
 
   provisioner "remote-exec" {
     inline = [
       "sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -",
-      "sudo echo \"deb http://apt.kubernetes.io/ kubernetes-xenial main\" | sudo tee --append /etc/apt/sources.list.d/kubernetes.list",
+      "sudo echo \"deb http://apt.kubernetes.io/ kubernetes-jammy main\" | sudo tee --append /etc/apt/sources.list.d/kubernetes.list",
       "sudo apt-get update",
       "sudo apt-get install -y docker.io",
       "sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni",
@@ -115,8 +119,8 @@ resource "aws_instance" "ci-sockshop-k8s-node" {
 resource "aws_elb" "ci-sockshop-k8s-elb" {
   depends_on = [ "aws_instance.ci-sockshop-k8s-node" ]
   name = "ci-sockshop-k8s-elb"
-  instances = ["${aws_instance.ci-sockshop-k8s-node.*.id}"]
-  availability_zones = ["${data.aws_availability_zones.available.names}"]
+  instances = "${aws_instance.ci-sockshop-k8s-node.*.id}"
+  availability_zones = "${data.aws_availability_zones.available.names}"
   security_groups = ["${aws_security_group.k8s-security-group.id}"] 
   listener {
     lb_port = 80
