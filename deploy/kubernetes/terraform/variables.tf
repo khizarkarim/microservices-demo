@@ -19,7 +19,7 @@ variable "instance_user" {
 
 variable "key_name" {
   description = "Name of the SSH keypair to use in AWS."
-  default     = "deploy-docs-k8s"
+  default     = "aws-keypair"
 }
 
 variable "master_instance_type" {
