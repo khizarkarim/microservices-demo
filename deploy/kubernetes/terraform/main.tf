@@ -22,7 +22,7 @@ locals {
           permissions = "0755"
           owner       = "ubuntu:ubuntu"
           encoding    = "b64"
-          content     = filebase64("../manifests")
+          content     = filebase64("../manifests/*")
         },
       ]
     })}
