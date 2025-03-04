@@ -5,3 +5,5 @@ sudo echo "deb http://apt.kubernetes.io/ kubernetes-jammy main" | sudo tee --app
 sudo apt-get update
 sudo apt-get install -y docker.io
 sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+git clone https://github.com/khizarkarim/microservices-demo.git
+cp microservices-demo/deploy/kubernetes/manifests /tmp/

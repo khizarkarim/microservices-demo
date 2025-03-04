@@ -363,11 +363,11 @@ resource "aws_elb" "ci-sockshop-k8s-elb" {
 data "cloudinit_config" "mycloudconfig" {
   base64_encode = false
   gzip = false
-  part {
-    content_type = "text/cloud-config"
-    filename     = "cloud-config.yaml"
-    content      = local.cloud_config_config
-  }
+  # part {
+  #   content_type = "text/cloud-config"
+  #   filename     = "cloud-config.yaml"
+  #   content      = local.cloud_config_config
+  # }
   part {
     content_type = "text/x-shellscript"
     content = file("k8s-master.tpl")
