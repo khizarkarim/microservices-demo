@@ -292,7 +292,7 @@ resource "aws_instance" "ci-sockshop-k8s-master" {
   #   host = self.public_ip
   #   private_key = "${var.private_key_path}"
   # }
-  # user_data = file("k8s-master.tpl")
+  user_data = data.cloudinit_config.mycloudconfig.rendered
   # provisioner "file" {
   #   source = "../manifests"
   #   destination = "/tmp/"
