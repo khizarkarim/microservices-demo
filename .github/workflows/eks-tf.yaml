@@ -22,17 +22,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     aws-access-key-id: $AWS_ACCESS_KEY_ID
-      #     aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
-      #     aws-session-token: $AWS_SESSION_TOKEN
-      #     aws-region: us-east-2
-      #     # role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-      #     # role-external-id: ${{ secrets.AWS_ROLE_EXTERNAL_ID }}
-      #     role-duration-seconds: 3600
-      #     role-session-name: DeployTF
       - name: TF Apply
         working-directory: ./deploy/kubernetes/terraform
         run: |
