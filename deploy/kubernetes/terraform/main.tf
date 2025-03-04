@@ -22,8 +22,204 @@ locals {
           permissions = "0755"
           owner       = "ubuntu:ubuntu"
           encoding    = "b64"
-          content     = filebase64("../manifests/*")
+          content     = filebase64("../manifests/00-sock-shop-ns.yaml")
         },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/01-carts-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/02-carts-svc.yml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/03-carts-db-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/04-carts-db-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/05-catalogue-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/06-catalogue-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/07-catalogue-db-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/08-catalogue-db-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/09-front-end-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/10-front-end-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/11-orders-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/12-orders-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/13-orders-db-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/14-orders-db-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/15-payment-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/16-payment-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/17-queue-master-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/18-queue-master-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/19-rabbitmq-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/20-rabbitmq-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/21-session-db-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/22-session-db-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/23-shipping-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/24-shipping-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/25-user-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/26-user-svc.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/27-user-db-dep.yaml")
+        },
+        {
+          path        = "/tmp/"
+          permissions = "0755"
+          owner       = "ubuntu:ubuntu"
+          encoding    = "b64"
+          content     = filebase64("../manifests/28-user-db-svc.yaml")
+        }
       ]
     })}
   END
